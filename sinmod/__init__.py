@@ -1,4 +1,4 @@
-from .mod import Mod
+from .mod import sinmod
 
 
 async def setup(bot):
