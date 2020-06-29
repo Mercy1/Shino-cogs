@@ -19,8 +19,6 @@ class tempmute(Mod.Cog):
     @commands.command()
     async def mycom(self, ctx):
 
-    __version__ = "1.1.4"
-
     def format_help_for_context(self, ctx):
         """Thanks Sinbad."""
         pre_processed = super().format_help_for_context(ctx)
