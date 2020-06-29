@@ -1,4 +1,4 @@
-from .mod import .Mod
+from .mod import Mod
 
 
 async def setup(bot):
