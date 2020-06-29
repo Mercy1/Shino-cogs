@@ -4,20 +4,20 @@ from datetime import datetime, timedelta
 from typing import Optional
 
 import discord
-from redbot.cogs.mod import Mod as tempmute
+from redbot.cogs.mod import tempmute as ModClass
 from redbot.core import Config, checks, commands, modlog
 from redbot.core.commands.converter import TimedeltaConverter
 from redbot.core.utils.chat_formatting import humanize_list, humanize_timedelta
 from redbot.core.utils.mod import is_allowed_by_hierarchy
 from redbot.core.utils.predicates import MessagePredicate
 
-log = logging.getLogger("red.Shino-cogs.tempmuute")
+log = logging.getLogger("red.Shino-cogs.mod")
 
-class tempmute(Mod.Cog):
-    """tempmute"""
 
-    @commands.command()
-    async def mycom(self, ctx):
+class tempmute(ModClass):
+    """Mod with timed mute."""
+
+    __version__ = "1.1.4"
 
     def format_help_for_context(self, ctx):
         """Thanks Sinbad."""
