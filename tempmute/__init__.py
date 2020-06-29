@@ -1,7 +1,4 @@
-from .mod import Mod
+from .tempmute import tempmute
 
-
-async def setup(bot):
-    cog = Mod(bot)
-    bot.add_cog(cog)
-    await cog.initialize()
+def setup(bot):
+    bot.add_cog(tempmute())
