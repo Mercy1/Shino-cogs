@@ -11,8 +11,13 @@ from redbot.core.utils.chat_formatting import humanize_list, humanize_timedelta
 from redbot.core.utils.mod import is_allowed_by_hierarchy
 from redbot.core.utils.predicates import MessagePredicate
 
-log = logging.getLogger("red.Shino-cogs.mod")
+log = logging.getLogger("red.Shino-cogs.tempmuute")
 
+class tempmute(Mod.Cog):
+    """tempmute"""
+
+    @commands.command()
+    async def mycom(self, ctx):
 
 class Mod(tempmute):
     """Mod with timed mute."""
