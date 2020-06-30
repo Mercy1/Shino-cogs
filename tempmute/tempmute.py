@@ -4,11 +4,9 @@ from datetime import datetime, timedelta
 from typing import Optional
 
 import discord
-from redbot.cogs.ModEX import ModEX as Mod
 from redbot.core import Config, checks, commands, modlog
 from redbot.core.commands.converter import TimedeltaConverter
 from redbot.core.utils.chat_formatting import humanize_list, humanize_timedelta
-from redbot.core.utils.mod import is_allowed_by_hierarchy
 from redbot.core.utils.predicates import MessagePredicate
 
 log = logging.getLogger("red.Shino-cogs.tempmute")
@@ -144,13 +142,6 @@ class TempMute(commands.Cog):
             for user in users:
                 if user == ctx.author:
                     failed.append(f"{user} - Self harm is bad.")
-                    continue
-                if not await is_allowed_by_hierarchy(
-                    self.bot, self.__config, guild, ctx.author, user
-                ):
-                    failed.append(
-                        f"{user} - You are not higher than this user in the role hierarchy"
-                    )
                     continue
                 if guild.me.top_role <= user.top_role or user == guild.owner:
                     failed.append(
