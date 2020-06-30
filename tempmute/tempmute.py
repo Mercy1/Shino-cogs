@@ -11,7 +11,7 @@ from redbot.core.utils.chat_formatting import humanize_list, humanize_timedelta
 from redbot.core.utils.mod import is_allowed_by_hierarchy
 from redbot.core.utils.predicates import MessagePredicate
 
-log = logging.getLogger("red.flarecogs.mod")
+log = logging.getLogger("red.Shino-cogs.tempmute")
 
 
 class Mod(tempmute):
