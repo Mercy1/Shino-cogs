@@ -18,8 +18,8 @@ class TempMute(commands.Cog):
     __version__ = "1.1.4"
 
     def __init__(self, bot):
-        super().__init__(bot)
         self.bot = bot
+        super().__init__(bot)
         self.__config = Config.get_conf(
             self, identifier=95932766180343808, force_registration=True
         )
