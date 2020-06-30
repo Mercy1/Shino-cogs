@@ -13,7 +13,7 @@ from redbot.core.utils.predicates import MessagePredicate
 log = logging.getLogger("red.Shino-cogs.tempmute")
 
 
-class TempMute(command.Cog):
+class TempMute(commands.Cog):
     """Mod with timed mute."""
 
     __version__ = "1.1.4"
