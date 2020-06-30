@@ -4,22 +4,29 @@ from datetime import datetime, timedelta
 from typing import Optional
 
 import discord
+from redbot.cogs.mod import Mod as tempmute
 from redbot.core import Config, checks, commands, modlog
 from redbot.core.commands.converter import TimedeltaConverter
 from redbot.core.utils.chat_formatting import humanize_list, humanize_timedelta
+from redbot.core.utils.mod import is_allowed_by_hierarchy
 from redbot.core.utils.predicates import MessagePredicate
 
 log = logging.getLogger("red.Shino-cogs.tempmute")
 
 
-class TempMute(commands.Cog):
+class Mod(tempmute):
     """Mod with timed mute."""
 
     __version__ = "1.1.4"
 
+    def format_help_for_context(self, ctx):
+        """Thanks Sinbad."""
+        pre_processed = super().format_help_for_context(ctx)
+        return f"{pre_processed}\nCog Version: {self.__version__}"
+
     def __init__(self, bot):
-        self.bot = bot
         super().__init__(bot)
+        self.bot = bot
         self.__config = Config.get_conf(
             self, identifier=95932766180343808, force_registration=True
         )
@@ -28,7 +35,15 @@ class TempMute(commands.Cog):
         self.__config.register_guild(**defaultsguild)
         self.__config.register_global(**defaults)
         self.loop = bot.loop.create_task(self.unmute_loop())
-        
+
+    # Removes main mods mute commands.
+    voice_mute = None
+    channel_mute = None
+    guild_mute = None
+    unmute_voice = None
+    unmute_channel = None
+    unmute_guild = None
+    # ban = None # TODO: Merge hackban and ban.
 
     def cog_unload(self):
         self.loop.cancel()
@@ -137,6 +152,13 @@ class TempMute(commands.Cog):
             for user in users:
                 if user == ctx.author:
                     failed.append(f"{user} - Self harm is bad.")
+                    continue
+                if not await is_allowed_by_hierarchy(
+                    self.bot, self.__config, guild, ctx.author, user
+                ):
+                    failed.append(
+                        f"{user} - You are not higher than this user in the role hierarchy"
+                    )
                     continue
                 if guild.me.top_role <= user.top_role or user == guild.owner:
                     failed.append(
