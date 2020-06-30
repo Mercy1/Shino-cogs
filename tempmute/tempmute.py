@@ -2,10 +2,8 @@ import asyncio
 import logging
 from datetime import datetime, timedelta
 from typing import Optional
-
 import discord
 from redbot.core import Config, checks, commands, modlog
-Mod = bot.get_cog("ModEX")
 from redbot.core.commands.converter import TimedeltaConverter
 from redbot.core.utils.chat_formatting import humanize_list, humanize_timedelta
 from redbot.core.utils.predicates import MessagePredicate
@@ -24,8 +22,10 @@ class Mod(tempmute):
         return f"{pre_processed}\nCog Version: {self.__version__}"
 
     def __init__(self, bot):
+
         super().__init__(bot)
         self.bot = bot
+        Mod = bot.get_cog("ModEX")
         self.__config = Config.get_conf(
             self, identifier=95932766180343808, force_registration=True
         )
