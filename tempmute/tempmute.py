@@ -4,7 +4,6 @@ from datetime import datetime, timedelta
 from typing import Optional
 
 import discord
-from redbot.cogs.mod import Mod as tempmute
 from redbot.core import Config, checks, commands, modlog
 from redbot.core.commands.converter import TimedeltaConverter
 from redbot.core.utils.chat_formatting import humanize_list, humanize_timedelta
@@ -14,7 +13,7 @@ from redbot.core.utils.predicates import MessagePredicate
 log = logging.getLogger("red.Shino-cogs.tempmute")
 
 
-class Mod(tempmute):
+class TempMute(command.Cog):
     """Mod with timed mute."""
 
     __version__ = "1.1.4"
@@ -35,15 +34,7 @@ class Mod(tempmute):
         self.__config.register_guild(**defaultsguild)
         self.__config.register_global(**defaults)
         self.loop = bot.loop.create_task(self.unmute_loop())
-
-    # Removes main mods mute commands.
-    voice_mute = None
-    channel_mute = None
-    guild_mute = None
-    unmute_voice = None
-    unmute_channel = None
-    unmute_guild = None
-    # ban = None # TODO: Merge hackban and ban.
+        
 
     def cog_unload(self):
         self.loop.cancel()
