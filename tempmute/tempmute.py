@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from typing import Optional
 
 import discord
-from redbot.cogs import ModEX as Mod
+from redbot.cogs.modEX import ModEX as Mod
 from redbot.core import Config, checks, commands, modlog
 from redbot.core.commands.converter import TimedeltaConverter
 from redbot.core.utils.chat_formatting import humanize_list, humanize_timedelta
