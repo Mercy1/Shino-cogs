@@ -2,6 +2,6 @@ from .tempmute import TempMute
 
 
 async def setup(bot):
-    cog = Mod(bot)
+    cog = TempMute(bot)
     bot.add_cog(cog)
     await cog.initialize()
