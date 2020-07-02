@@ -2,16 +2,19 @@ import asyncio
 import logging
 from datetime import datetime, timedelta
 from typing import Optional
+
 import discord
+from redbot.cogs.mod import Mod as tempmute
 from redbot.core import Config, checks, commands, modlog
 from redbot.core.commands.converter import TimedeltaConverter
 from redbot.core.utils.chat_formatting import humanize_list, humanize_timedelta
+from redbot.core.utils.mod import is_allowed_by_hierarchy
 from redbot.core.utils.predicates import MessagePredicate
 
 log = logging.getLogger("red.Shino-cogs.tempmute")
 
 
-class Mod(TempMute):
+class Mod(tempmute):
     """Mod with timed mute."""
 
     __version__ = "1.1.4"
@@ -22,10 +25,8 @@ class Mod(TempMute):
         return f"{pre_processed}\nCog Version: {self.__version__}"
 
     def __init__(self, bot):
-
         super().__init__(bot)
         self.bot = bot
-        Mod = bot.get_cog("ModEX")
         self.__config = Config.get_conf(
             self, identifier=95932766180343808, force_registration=True
         )
@@ -151,6 +152,13 @@ class Mod(TempMute):
             for user in users:
                 if user == ctx.author:
                     failed.append(f"{user} - Self harm is bad.")
+                    continue
+                if not await is_allowed_by_hierarchy(
+                    self.bot, self.__config, guild, ctx.author, user
+                ):
+                    failed.append(
+                        f"{user} - You are not higher than this user in the role hierarchy"
+                    )
                     continue
                 if guild.me.top_role <= user.top_role or user == guild.owner:
                     failed.append(
