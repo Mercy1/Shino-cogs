@@ -1,4 +1,4 @@
-from .tempmute import Mod
+from .tempmute import tempmute
 
 
 async def setup(bot):
