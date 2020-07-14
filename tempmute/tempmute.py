@@ -19,10 +19,6 @@ class tempmute(tempmute):
 
     __version__ = "1.1.4"
 
-    def format_help_for_context(self, ctx):
-        """Thanks Sinbad."""
-        pre_processed = super().format_help_for_context(ctx)
-        return f"{pre_processed}\nCog Version: {self.__version__}"
 
     def __init__(self, bot):
         super().__init__(bot)
