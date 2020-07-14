@@ -10,7 +10,6 @@ from redbot.core.commands.converter import TimedeltaConverter
 from redbot.core.utils.chat_formatting import humanize_list, humanize_timedelta
 from redbot.core.utils.mod import is_allowed_by_hierarchy
 from redbot.core.utils.predicates import MessagePredicate
-from .mutes import MuteMixin
 
 log = logging.getLogger("red.Shino-cogs.tempmute")
 
@@ -38,12 +37,12 @@ class tempmute(tempmute):
         self.loop = bot.loop.create_task(self.unmute_loop())
 
     # Removes main mods mute commands.
-    #voice_mute = None
-    #channel_mute = None
-    #guild_mute = None
-    #unmute_voice = None
-    #unmute_channel = None
-    #unmute_guild = None
+    voice_mute = None
+    channel_mute = None
+    guild_mute = None
+    unmute_voice = None
+    unmute_channel = None
+    unmute_guild = None
     # ban = None # TODO: Merge hackban and ban.
 
     def cog_unload(self):
