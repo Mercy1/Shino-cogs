@@ -39,12 +39,12 @@ class tempmute(tempmute):
         self.loop = bot.loop.create_task(self.unmute_loop())
 
     # Removes main mods mute commands.
-    voice_mute = None
-    channel_mute = None
-    guild_mute = None
-    unmute_voice = None
-    unmute_channel = None
-    unmute_guild = None
+    voice_mute = voice_mute
+    channel_mute = channel_mute
+    guild_mute = guild_mute
+    unmute_voice = unmute_voice
+    unmute_channel = unmute_channel
+    unmute_guild = unmute_guild
     # ban = None # TODO: Merge hackban and ban.
 
     def cog_unload(self):
