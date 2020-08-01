@@ -85,6 +85,9 @@ class Gallery(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
+        user = message.author
+        if user.bot:
+            return
         if not message.guild:
             return
         if message.channel.id not in await self.config.guild(message.guild).channels():
