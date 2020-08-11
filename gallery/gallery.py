@@ -21,7 +21,7 @@ class Gallery(commands.Cog):
             self, identifier=564154651321346431, force_registration=True
         )
 
-        self.config.register_guild(channels=[], whitelist=None, time=0)
+        self.config.register_guild(channels=[], whitelist=None, time=0)        
 
     @commands.command()
     @commands.guild_only()
@@ -103,7 +103,8 @@ class Gallery(commands.Cog):
                 parts = uri.split(".")
                 extension = parts[-1]
                 imageTypes = ["jpg", "jpeg", "tiff", "png", "gif", "bmp", "mp4", "webm"]
-                if extension in imageTypes:
+                youtube = ["^([a-zA-Z0-9]+\.)*youtube\.com\/?.*"]
+                if extension in imageTypes or youtube:
                     return
             rid = await self.config.guild(message.guild).whitelist()
             time = await self.config.guild(message.guild).time()
