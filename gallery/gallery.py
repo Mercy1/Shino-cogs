@@ -21,10 +21,20 @@ class Gallery(commands.Cog):
             self, identifier=564154651321346431, force_registration=True
         )
 
-        self.config.register_guild(channels=[], whitelist=None, time=0)        
+        self.config.register_guild(channels=[], whitelist=None, time=0)
+        
     async def red_get_data_for_user(self, *, user_id: int):
         # this cog does not story any data
         return {}
+    
+    async def red_delete_data_for_user(
+        self,
+        *,
+        requester: Literal["discord_deleted_user", "owner", "user", "user_strict"],
+        user_id: int,
+    ):
+        
+        pass # We Do nothing with user data here, so, No but have a fox gif insted 🦊- https://thumbs.gfycat.com/HarmoniousFrailKissingbug-size_restricted.gif.
 
     @commands.command()
     @commands.guild_only()
