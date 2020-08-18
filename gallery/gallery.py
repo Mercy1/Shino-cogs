@@ -5,7 +5,7 @@ import re
 from redbot.core import Config, checks, commands
 
 from redbot.core.bot import Red
-
+from typing import Literal
 
 class Gallery(commands.Cog):
     """
