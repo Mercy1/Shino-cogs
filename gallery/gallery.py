@@ -12,8 +12,8 @@ class Gallery(commands.Cog):
     Gallery channels!
     """
 
-    __author__ = "saurichable"
-    __version__ = "1.2.1"
+    __author__ = "saurichable, [Edit's] Sinon"
+    __version__ = "1.2.1.E"
 
     def __init__(self, bot: Red):
         self.bot = bot
@@ -22,6 +22,9 @@ class Gallery(commands.Cog):
         )
 
         self.config.register_guild(channels=[], whitelist=None, time=0)        
+    async def red_get_data_for_user(self, *, user_id: int):
+        # this cog does not story any data
+        return {}
 
     @commands.command()
     @commands.guild_only()
