@@ -107,7 +107,7 @@ class Gallery(commands.Cog):
         if message.channel.id not in await self.config.guild(message.guild).channels():
             return
         if not message.attachments:
-            dab = common_filters.escape_spoilers(message.content
+            dab = common_filters.escape_spoilers(message.content)
             uris = re.findall(
                 "(?=\S+youtube\.com|\S+youtu\.be\/|\S+tenor\.com|\S+\.mov|\S+\.jpg|\S+\.jpeg|\S+\.tiff|\S+\.gif|\S+\.bmp|\S+\.mp4|\S+\.webm|\S+\.png|)((?<!\S)(((f|ht){1}tp[s]?:\/\/+|(?<!\S)www\.)[-a-zA-Z0-9@:%_\+.~#?&|\/\/=]+))",
                 message.content,
