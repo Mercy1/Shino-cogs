@@ -109,6 +109,7 @@ class Gallery(commands.Cog):
         if not message.attachments:
             escaped = discord.utils.escape_markdown(message.content)
             stripped = escaped.lstrip("||")
+            print(stripped)
             uris = re.findall(
                 "(?=\S+youtube\.com|\S+youtu\.be\/|\S+tenor\.com|\S+\.mov|\S+\.jpg|\S+\.jpeg|\S+\.tiff|\S+\.gif|\S+\.bmp|\S+\.mp4|\S+\.webm|\S+\.png|)((?<!\S)(((f|ht){1}tp[s]?:\/\/+|(?<!\S)www\.)[-a-zA-Z0-9@:%_\+.~#?&|\/\/=]+))",
                 stripped,
