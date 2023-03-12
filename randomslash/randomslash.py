@@ -8,16 +8,18 @@ from PIL import Image
 from interactions.api.models.message import Embed
 from imgix import UrlBuilder
 from discord import File
-from discord_slash import SlashCommand, SlashContext, Option
+from dislash import InteractionClient
 from discord.ext import commands
 
 from redbot.core import commands
 
+bot = commands.Bot(command_prefix="*")
+inter_client = InteractionClient(bot)
+
 class randomslash(commands.Cog):
 
 
-
-    @slash.slash(
+    @inter_client.slash_command(
     name="cat", 
     description="Get a random cat image",
     options = [
@@ -101,7 +103,7 @@ class randomslash(commands.Cog):
         #DEBUG await ctx.send(url) - This posts the non-preview RAW Imgix link 
 
 
-    @slash.slash(
+    @inter_client.slash_command(
     name="fox",
     description="Sends a random fox or 'floof' to your screen 🦊"
 )
